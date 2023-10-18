@@ -10,7 +10,7 @@
 void p_error(int index, char *name, char *cmd)
 {
 	char *str_indx, msg[] = ": not found\n";
-	
+
 	str_indx = intToStr(index);
 	write(2, name, str_len(name));
 	write(2, ": ", 2);
