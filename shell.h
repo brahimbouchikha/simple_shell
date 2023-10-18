@@ -12,7 +12,6 @@
 #include <fcntl.h>
 
 extern char **environ;
-
 char *read_input_line(void);
 char **custom_toknizer(char *str);
 int exec_cmd(char **cmd, char **argv,int index);
@@ -28,8 +27,14 @@ int str_cmp(char *str1, char *str2);
 
 void free_string_array(char **array);
 void FreeAndSetToNULL(void  **param);
+/*builtin*/
+int builtin(int *st, char *cmd[]);
+
+/*custom_builtin*/
+void custom_exit(int *st, char *cmd[]);
+void custom_env(int *st, char *cmd[]);
 
 /*Others*/
 char *intToStr(int n);
-
+int isBuiltin(char *str);
 #endif

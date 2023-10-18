@@ -28,3 +28,21 @@ void FreeAndSetToNULL(void **param)
 		free(*param);
 	*param = NULL;
 }
+/**
+ * isBuiltin - Check if command is builtin
+ * @str: The input command
+ *
+ * Return: 1 if is builtin, 0 otherwise
+*/
+int isBuiltin(char *str)
+{
+	int i;
+	char *builttinFunc[] = {"exit", "env"};
+
+	for (i = 0; i < 2; i++)
+	{
+		if (str_cmp(str, builttinFunc[i]) == 0)
+			return (1);
+	}
+	return (0);
+}
