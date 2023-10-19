@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 		cmd_args = custom_toknizer(readline);
 		if (!cmd_args)
 			continue;
-		if (builtin(&status, cmd_args))
+		if (builtin(argv[0], i, &status, cmd_args))
 			continue;
 		status =  exec_cmd(cmd_args, argv, i);
 	}
