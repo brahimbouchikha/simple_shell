@@ -12,12 +12,7 @@ void custom_exit(char *argv, int index, int *st, char *cmd[])
 	int exitVal = (*st);
 	char *str_indx, msg[] = ": exit: Illegal number: ";
 
-	if(!cmd[1])
-	{
-	free_string_array(cmd);
-	exit(exitVal);
-	}
-	else
+	if (cmd[1])
 	{
 		if (custom_atoi(cmd[1]) != 0)
 		{
@@ -35,8 +30,11 @@ void custom_exit(char *argv, int index, int *st, char *cmd[])
 		write(2, "\n", 1);
 		FreeAndSetToNULL((void **) &str_indx);
 		free_string_array(cmd);
+		return;
 		}
 	}
+	free_string_array(cmd);
+	exit(exitVal);
 }
 
 /**
