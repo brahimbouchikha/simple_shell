@@ -21,6 +21,8 @@ int builtin(char *argv, int index, int *st, char *cmd[])
 			custom_exit(argv, index, st, cmd);
 		else if (str_cmp(str, "env") == 0)
 			custom_env(st, cmd);
+		else if (str_cmp(str, "setenv") == 0)
+			custom_setenv(st, cmd);
 	}
 	return (result);
 }

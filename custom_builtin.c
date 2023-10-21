@@ -56,3 +56,43 @@ void custom_env(int *st, char *cmd[])
 	*st = 0;
 	free_string_array(cmd);
 }
+
+void custom_setenv(int *st, char *cmd[])
+{
+	int i = 0;
+	char *env = NULL, *tmpenv = NULL, *key = NULL;
+
+	env = malloc(str_len(cmd[1]) + str_len(cmd[2]) + 2);
+	strcpy(env, cmd[1]);
+	strcat(env, "=");
+	strcat(env, cmd[2]);
+
+	while (environ[i])
+	{
+		tmpenv = str_dup(environ[i]);
+		key = strtok(tmpenv, "=");
+		if (str_cmp(key, cmd[1]) == 0)
+		{
+			*st = 0;
+			if (env)
+			{
+				environ[i] = malloc(str_len(cmd[1]) + str_len(cmd[2]) + 2);
+				str_cp(environ[i], env);
+				FreeAndSetToNULL((void **)&env);
+				FreeAndSetToNULL((void **)&tmpenv);
+				free_string_array(cmd);
+				return;
+			}
+		}
+		FreeAndSetToNULL((void **)&tmpenv);
+		i++;
+		
+
+	}
+	environ[i] = malloc(str_len(cmd[1]) + str_len(cmd[2]) + 2);
+	str_cp(environ[i], env);
+	environ[i + 1] = NULL;
+	free_string_array(cmd);
+	FreeAndSetToNULL((void **)&env);
+	*st = 0;
+}

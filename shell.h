@@ -32,7 +32,7 @@ int builtin(char *argv, int index,int *st, char *cmd[]);
 /*custom_builtin*/
 void custom_exit(char *argv, int index, int *st, char *cmd[]);
 void custom_env(int *st, char *cmd[]);
-
+void custom_setenv(int *st, char *cmd[]);
 /*Others*/
 void free_string_array(char **array);
 void FreeAndSetToNULL(void  **param);

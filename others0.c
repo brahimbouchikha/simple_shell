@@ -37,9 +37,9 @@ void FreeAndSetToNULL(void **param)
 int isBuiltin(char *str)
 {
 	int i;
-	char *builttinFunc[] = {"exit", "env"};
+	char *builttinFunc[] = {"exit", "env", "setenv"};
 
-	for (i = 0; i < 2; i++)
+	for (i = 0; i < 3; i++)
 	{
 		if (str_cmp(str, builttinFunc[i]) == 0)
 			return (1);
